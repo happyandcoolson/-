@@ -1,0 +1,26 @@
+board = ["*"] * 9
+from functions import *
+# 0. 문양선택(o, x)
+player = selectOX()
+# 1. 게임 실행
+while True:
+    # 1-1. 플레이어가 놓을 좌표 입력
+    pos = inputPos(board)
+    # 1-2. 해당 좌표에 플레이어의 문양을 넣고, 우승조건을 확인
+
+    board[pos] = player
+    displayBoard(board)
+    # 1-3. 해당 좌표가 우승조건에 성립한다면, "PLAYER WIN'이라는 문장 출력 후 게임 종료
+    if VICTORY:
+        print("PLAYER WIN")
+        exit()
+    # 1.4. 컴퓨터가 놓을 좌표를 계산(랜덤모듈)
+    pos = randomPos()
+    # 1-5. 랜덤모듈로 가져온 좌표에 컴퓨터의 문양을 넣고, 우승조건 확인
+    board[pos] = computer
+    displayBoard(board)
+    # 1-6. 해당 좌표가 우승조건에 성립한다면, 'COMPUTER WIN YOU LOSE ㅋ"이라는 문장 출력 후 게임 종료
+    if Victory():
+        print("COMPUTER WIN YOU LOSE ㅋ")
+        exit()
+    # 1-7. 만약 더이상 놓을 공간이 없다면 무승부로 판별, "DRAW"라는 문장 출력 후 게임 종료
