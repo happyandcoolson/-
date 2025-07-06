@@ -1,0 +1,57 @@
+from random import *
+
+def selectOX():
+    while True:
+        a=input("OX 중에 하나 골라주세요:").upper()
+        if a == "O":
+            return 'O', 'X'
+        elif a == "X":
+            return 'X' ,'O'
+        else:
+            print("잘못된 값을 입력했습니다.")
+
+def displayBoard(board):
+    #현재 보드 상태를 출력
+    for i in range(3):
+        print(" -------------------------")
+        print(f" | {board[i*3]} | {board[i*3+1]} | {board[i*3+2]} |")
+    print(" -------------------------")
+def inputPos(board):
+    #플레이어가 놓을 좌표 입력받는 함수
+    #1. 플레이어가 놓을 좌표 입력
+    while True:
+        pos=input("1부터 9사이에 수를 입력해주세요")
+        if pos.isdigit():
+            pos=int(pos)
+            if 1 <= pos <= 9:
+                if board[pos-1] == "*":
+                    return pos-1
+                else:
+                    print("이미 입력된 자리입니다")
+            else:
+                print("범위를 벗어났습니다 다시 입력해주세요")
+        else:
+            print("숫자 입력해")
+
+
+
+
+
+def VICTORY():
+    #현재 턴의 유저가 승리했는지를 확인
+    return
+
+def randomPos():
+    #컴퓨터가 놓을 수 있는 좌표 중 랜덤한 좌표 변환
+    return
+
+
+if __name__ == "__main__":  # 프로그램 실행 시 이 코드 페이지를 메인으로 실행했나?
+    # print("functions:", selectOX())
+    # player, computer = selectOX()
+    board = ["*"] * 9
+    board[2] = "O"
+    board[3] = "X"
+    board[4] = "O"
+    inputPos(board)
+    displayBoard(board)
